@@ -26,12 +26,13 @@ if($articles['itemListElement']) {
         $dateInLocal = date("d F Y H:i:s", $time);
         $datetimer   = date("YmdHis", $time);
 
-        $dataset[$datetimer][]  = array(
-                                        "title"     => $isi['headline'],
+        $dataset[]  = array(
+                                        "title"     => strip_tags($isi['headline']),
                                         "src"       => "hukumonline.com",
                                         "thumb"     => $isi['image'],
                                         "link"      => $isi['url'],
                                         "date"      => $dateInLocal,
+                                        "id"        => $datetimer,
                                         );
     }
 }
