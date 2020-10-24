@@ -26,9 +26,8 @@ if($articles['itemListElement']) {
         $dateInLocal = date("d F Y H:i:s", $time);
         $datetimer   = date("YmdHis", $time);
 
-        $dataset[]  = array(
-                                        "title"     => strip_tags($isi['headline']),
-                                        "src"       => "hukumonline.com",
+        $dataset[]  = array("title"     => strip_tags($isi['headline']),
+                                        "src"       => "Hukumonline.com",
                                         "thumb"     => $isi['image'],
                                         "link"      => $isi['url'],
                                         "date"      => $dateInLocal,
@@ -41,10 +40,10 @@ $grep->save($filecontrol,json_encode($dataset));
 
     header('Content-Type: application/json');
     $output = array("dataset"   => $dataset,
-                    "raw"       => $data,
+                    "raw"       => "",
                     // "preview"   => $dom->saveHTML(),
                     "preview"   => "",
-                    "api_link"       => '<a href="'.$api_link.'" target="_blank">Disini</a>',
+                    "api_link"  => '<a href="'.$api_link.'" target="_blank">Disini</a>',
                     );
     echo json_encode($output);
 ?>
