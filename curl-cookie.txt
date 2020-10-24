@@ -12,4 +12,4 @@ www.creativefabrica.com	FALSE	/	TRUE	0	mailchimp_landing_site	https%3A%2F%2Fwww.
 #HttpOnly_.hukumonline.com	TRUE	/	FALSE	1606144093	__cfduid	df1d2a18679c86e82bae47b2c69d399651603552093
 .hukumonline.com	TRUE	/	FALSE	1603639094	PHPSESSID	60g6lb69a6brft0jds1ehifve4
 #HttpOnly_www.hukumonline.com	FALSE	/	FALSE	1603634894	__cflb	02DiuGNzCxQmAuDrWvG95RKgWwRGEMidwkncqzkHA87FS
-www.hukumonline.com	FALSE	/	FALSE	1603560022	isLoggedIn	deleted
+www.hukumonline.com	FALSE	/	FALSE	1603560137	isLoggedIn	deleted
