@@ -43,7 +43,7 @@ $grep->save($filecontrol,json_encode($dataset));
                     "raw"       => "",
                     // "preview"   => $dom->saveHTML(),
                     "preview"   => "",
-                    "api_link"  => '<a href="'.$api_link.'" target="_blank">Disini</a>',
+                    "api_link"  => "<a href='$api_link' target='_blank'>Disini</a>",
                     );
     echo json_encode($output);
 ?>
