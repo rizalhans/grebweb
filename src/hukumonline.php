@@ -17,7 +17,7 @@ $dom->loadHTML($data);
 $content = $dom->getElementById('lhs-section'); //DOMElement
 $konten = new DOMXpath($dom);
 $article = $konten->query("//script[@type='application/ld+json']");
-$articles = json_decode($article[0]->nodeValue,1);
+$articles = json_decode(str_replace("'","\'",strip_tags($article[0]->nodeValue)),1);
 $dataset = array();
 if($articles['itemListElement']) {
     foreach($articles['itemListElement'] as $isi) {
@@ -41,7 +41,7 @@ $grep->save($filecontrol,json_encode($dataset));
     header('Content-Type: application/json');
     $output = array("dataset"   => $dataset,
                     "raw"       => "",
-                    // "preview"   => $dom->saveHTML(),
+                    //"preview"   => $dom->saveHTML(),
                     "preview"   => "",
                     "api_link"  => "<a href='$api_link' target='_blank'>Disini</a>",
                     );

@@ -1,8 +1,6 @@
 <?php
-
 //// start
 $curl = curl_init();
-
 curl_setopt_array($curl, array(
   CURLOPT_URL => "https://officiumnobile.com/grebweb/src/hukumonline.php",
   CURLOPT_RETURNTRANSFER => true,
