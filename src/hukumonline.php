@@ -14,19 +14,19 @@ $data = $grep->htmlResult;
 $dom = new DOMDocument();
 $dom->loadHTML($data);
 
-$content = $dom->getElementById('lhs-section'); //DOMElement
 $konten = new DOMXpath($dom);
-$article = $konten->query("//script[@type='application/ld+json']");
-$articles = json_decode(str_replace("'","\'",strip_tags($article[0]->nodeValue)),1);
+$article = $konten->query("//*[@type='application/ld+json']");
+$articles = json_decode($article[0]->nodeValue,1); 
+
 $dataset = array();
-if($articles['itemListElement']) {
+if(isset($articles['itemListElement']) && $articles['itemListElement']) {
     foreach($articles['itemListElement'] as $isi) {
 
         $time = strtotime($isi['datePublished']);
         $dateInLocal = date("d F Y H:i:s", $time);
         $datetimer   = date("YmdHis", $time);
 
-        $dataset[]  = array("title"     => strip_tags($isi['headline']),
+                    $dataset[]  = array("title"     => strip_tags($isi['headline']),
                                         "src"       => "Hukumonline.com",
                                         "thumb"     => $isi['image'],
                                         "link"      => $isi['url'],
@@ -35,6 +35,7 @@ if($articles['itemListElement']) {
                                         );
     }
 }
+
 $filecontrol = "HUKUMONLINE";
 $grep->save($filecontrol,json_encode($dataset));
 
