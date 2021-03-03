@@ -13,11 +13,16 @@ $data = $grep->htmlResult;
 
 $dom = new DOMDocument();
 $dom->loadHTML($data);
-
 $konten = new DOMXpath($dom);
-$article = $konten->query("//*[@type='application/ld+json']");
-$articles = json_decode($article[0]->nodeValue,1); 
-
+$query = '//*[@type="application/ld+json"]';
+$article = $konten->query($query); 
+$json = $article[0]->nodeValue;
+$json = str_replace("'","",$json);
+$json = str_replace("\\","",$json);
+$json = str_replace("--","-",$json);
+$json = str_replace('
+"','"',$json);
+$articles = json_decode($json,1);
 $dataset = array();
 if(isset($articles['itemListElement']) && $articles['itemListElement']) {
     foreach($articles['itemListElement'] as $isi) {
