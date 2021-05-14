@@ -62,11 +62,11 @@ class Grabweb {
         $this->ch = curl_init();
         curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($this->ch, CURLOPT_AUTOREFERER, true);
-        @curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($this->ch, CURLOPT_MAXREDIRS, 2);
         curl_setopt($this->ch, CURLOPT_COOKIEFILE, dirname(__FILE__).'/curl-cookie.txt');
         curl_setopt($this->ch, CURLOPT_COOKIEJAR, dirname(__FILE__).'/curl-cookie.txt');
-        curl_setopt($this->ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+        curl_setopt($this->ch, CURLOPT_USERAGENT, isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "" );
  
     }
  
